@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Sasai</string>
+
+    <string name="compose_shortcut_short_label1">goTest</string>
+    <string name="compose_shortcut_long_label1">Let\'s go testing...</string>
+    <string name="compose_disabled_message1">disabled_message1</string>
+
+    <string name="text">Sasai</string>
+
+    <array name="validValues">
+        <item>\'</item>  <item>\"</item>
+        <item>.</item>  <item>,</item>
+        <item>:</item>  <item>;</item>
+        <item>!</item>  <!--item>?</item-->
+        <item>/</item>   <item>\</item> <item>|</item>
+
+        <item>{</item>  <item>}</item>
+        <item>(</item>  <item>)</item>
+        <item>[</item>  <item>]</item>
+        <item>%</item>   <item>$</item> <item>#</item>
+
+    </array>
+</resources>
