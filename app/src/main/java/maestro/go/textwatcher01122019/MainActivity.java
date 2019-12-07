@@ -1,20 +1,29 @@
 package maestro.go.textwatcher01122019;
 
+//import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.pm.ShortcutInfo;
-import android.content.pm.ShortcutManager;
+//import android.content.pm.ShortcutInfo;
+//import android.content.pm.ShortcutManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+//import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
+
+
 
 public class MainActivity extends AppCompatActivity {
+
+
+    //private FirebaseAuth mAuth; //  Initialize Firebase       //todo: Firebase
+
 
     private EditText editTextUsername;
     private EditText editTextPassword;
@@ -26,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //  Make Toast Of Created Activity
         Toast.makeText(this, "onCreateMainActivity", Toast.LENGTH_SHORT).show();
+
+
+        /*// Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();*/                   //todo: Firebase
 
 
         /*ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
@@ -60,12 +75,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     /*@Override
-            protected void onStart(){
+    public void onStart() {
         super.onStart();
-    }*/
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }*/                                                         //todo: Firebase
+
+
 
     TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
@@ -81,31 +103,10 @@ public class MainActivity extends AppCompatActivity {
             boolean usernameInputGood = ! StrTest.contains(usernameInput, getResources().getStringArray(R.array.validValues));
             boolean passwordInputGood = ! StrTest.contains(passwordInput, getResources().getStringArray(R.array.validValues));
 
-            buttonConfirm.setEnabled(!usernameInput.isEmpty() && !passwordInput.isEmpty());
-
-            if ( usernameInput.length() >= 3 && passwordInput.length() >= 8 && usernameInputGood && passwordInputGood  ) {   /*&& !passwordInput.contains(" ") && !usernameInput.contains(" ")*/
-                buttonConfirm.setEnabled(true);
-            }else{
-                buttonConfirm.setEnabled(false);
-
-                /*if(usernameInputGood){
-
-                    //editTextUsername.dispa
-
-                    if(passwordInputGood){
-
-
-                    }
-
-                }else{
-
-                }*/
-            }
+            buttonConfirm.setEnabled( (!usernameInput.isEmpty()) && passwordInput.length() >= 8 );
 
             /*if(!(passwordInput.contains(".")||passwordInput.contains("/")||passwordInput.contains("\\")||passwordInput.contains(",")||passwordInput.contains("&")||passwordInput.contains("*")||passwordInput.contains("%")||passwordInput.contains("#"))) {
-                if(passwordInput.split(" ").length == 1){
 
-                }
             }*/
         }
 
